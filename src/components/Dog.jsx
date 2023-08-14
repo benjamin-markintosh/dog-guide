@@ -1,14 +1,17 @@
 import React from "react";
 
 const Dog = (dog) => {
+  console.log(dog);
+  console.log(dog.dog.reference_image_id);
+
   return (
     <div id="result">
       <div className="info">
-        {dog.reference_image_id ? (
+        {dog.dog.reference_image_id ? (
           <img
-            src={`https://cdn2.thedogapi.com/images/${dog?.reference_image_id}_1280.jpg`}
+            src={`https://cdn2.thedogapi.com/images/${dog.dog.reference_image_id}.jpg`}
             className="poster"
-            alt={dog?.name}
+            alt={dog?.dog?.name}
           />
         ) : (
           <img
@@ -18,12 +21,12 @@ const Dog = (dog) => {
           />
         )}
         <div>
-          <h2>{dog?.name}</h2>
-          <p className="details">Temperament: {dog?.temperament}</p>
-          <p className="details">Origin: {dog?.origin}</p>
+          <h2>{dog?.dog?.name}</h2>
+          <p className="details">Temperament: {dog?.dog?.temperament}</p>
+          <p className="details">Origin: {dog?.dog?.origin}</p>
           <div className="breed">
-            <div>Weight (imperial): {dog?.weight.imperial}</div>
-            <div>Height (imperial): {dog?.height.imperial}</div>
+            <div>Weight (imperial): {dog?.dog?.weight?.imperial}</div>
+            <div>Height (imperial): {dog?.dog?.height?.imperial}</div>
           </div>
         </div>
       </div>

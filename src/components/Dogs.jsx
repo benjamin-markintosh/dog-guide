@@ -1,14 +1,14 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import Dog from "./Dog";
 
 const Dogs = () => {
-  const [dogBreed, setdogBreed] = useState("");
+  const [dogBreed, setDogBreed] = useState(true);
   const [dogData, setDogData] = useState([]);
 
   const handleSearch = async () => {
     try {
       const response = await fetch(
-        `https://api.thedogapi.com/v1/breeds/search?q=${dogBreed}`
+        `https://api.thedogapi.com/v1/breeds/search?name=${dogBreed}`
       );
       const data = await response.json();
       setDogData(data);
@@ -27,7 +27,9 @@ const Dogs = () => {
           type="text"
           id="dog-name"
           placeholder="Enter dog name here..."
-          onChange={(e) => setdogBreed(e.target.value)}
+          onChange={(e) => {
+            setDogBreed(e.target.value);
+          }}
         />
         <button id="search-btn" onClick={handleSearch}>
           Search
